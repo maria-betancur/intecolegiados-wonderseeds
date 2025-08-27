@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wonderseeds Badminton – Intercolegiados Boyacá 2025</title>
+
+  <!--BY Maria Fernanda Betancur-->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link rel="icon" href="Logos con Iniciales para Nombre Sencillo Tipográfico Circular Blanco y Negro.png" sizes="192x192" type="image/png">
+
+  <style>
+    :root {
+      --primary: #5cd6d2;
+      --primary-light: #47ffaf;
+      --primary-dark: #448d49;
+      --accent: #05c50f;
+      --gray: #d2f6f6;
+      --dark: #333;
+      --light-green: #c8e6c9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f9f9f9 0%, #e0f2f1 100%);
+      color: var(--dark);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--primary);
+      color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-top: 8px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h2 i {
+      color: var(--accent);
+    }
+
+    form label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    form button {
+      margin-top: 18px;
+      padding: 12px 18px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: var(--light-green);
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      flex: 1;
+      min-width: 120px;
+      padding: 10px 15px;
+      background-color: var(--primary-light);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: var(--primary);
+    }
+
+    .btn.red {
+      background-color: #d32f2f;
+    }
+
+    .btn.red:hover {
+      background-color: #b71c1c;
+    }
+
+    .btn.orange {
+      background-color: var(--accent);
+    }
+
+    .btn.orange:hover {
+      background-color: #f57c00;
+    }
+
+    .partidos, .calendario {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: var(--gray);
+      border-radius: 8px;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .set-inputs {
+      background: #f1f8e9;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #dcedc8;
+    }
+
+    .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .resumen-partido {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .info-jugadores {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><i class="fas fa-shuttlecock"></i> Wonderseeds Badminton</h1>
+    <p>Intercolegiados Boyacá 2025</p>
+  </header>
+
+  <div class="container">
+    <!-- Formulario de Registro -->
+    <div class="card">
+      <h2><i class="fas fa-user-plus"></i> Registrar Jugador</h2>
+      <form id="formulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="rango">Categoría:</label>
+        <select id="rango" required>
+          <option value="">Selecciona...</option>
+          <option value="PreInfantilSub9">Pre Infantil U 9 (8-9 años)</option>
+          <option value="InfantilSub11">Infantil U 11 (10–12 años)</option>
+          <option value="JuvenilSub13">Juvenil U 13 (13–14 años)</option>
+          <option value="PreJuvenilSub15">Pre Juvenil U 15 (15–16 años)</option>
+          <option value="JuvenilSub17">Juvenil U 17 (17–18 años)</option>
+          <option value="Absoluto">Absoluto (≥19 años)</option>
+        </select>
+
+        <label for="club">Club:</label>
+        <input type="text" id="club" required>
+
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" required>
+          <option value="">Selecciona...</option>
+          <option value="Femenino">Femenino</option>
+          <option value="Masculino">Masculino</option>
+        </select>
+
+        <label for="modalidad">Modalidad:</label>
+        <select id="modalidad" required>
+          <option value="">Selecciona...</option>
+          <option value="Individual Femenino">Individual Femenino</option>
+          <option value="Individual Masculino">Individual Masculino</option>
+          <option value="Dobles Femenino">Dobles Femenino</option>
+          <option value="Dobles Masculino">Dobles Masculino</option>
+          <option value="Mixto">Dobles Mixto</option>
+        </select>
+
+        <div id="campo-pareja" style="display: none;">
+          <label for="pareja">Nombre de la Pareja:</label>
+          <input type="text" id="pareja" placeholder="Nombre del compañero/a">
+        </div>
+
+        <button type="submit"><i class="fas fa-plus"></i> Agregar Jugador</button>
+      </form>
+    </div>
+
+    <!-- Lista de Jugadores -->
+    <div class="card">
+      <h2><i class="fas fa-users"></i> Jugadores Inscritos</h2>
+      <table id="tablaDeportistas">
+        <tr>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Club</th>
+          <th>Sexo</th>
+        </tr>
+      </table>
+      <p class="info-jugadores" id="info-jugadores"></p>
+    </div>
+
+    <!-- Botones de Control -->
+    <div class="card">
+      <h2><i class="fas fa-trophy"></i> Gestión del Torneo</h2>
+      <div class="btn-group">
+        <button id="btnCrearPartido" onclick="crearPartido()">
+          <i class="fas fa-play"></i> Iniciar Torneo
+        </button>
+        <button onclick="generarCuartos()" class="btn orange">
+          <i class="fas fa-angle-double-right"></i> Cuartos
+        </button>
+        <button onclick="generarSemifinales()" class="btn orange">
+          <i class="fas fa-angle-double-right"></i> Semifinales
+        </button>
+        <button onclick="generarFinal()" class="btn orange">
+          <i class="fas fa-flag-checkered"></i> Final
+        </button>
+        <button onclick="limpiarSistema()" class="btn red">
+          <i class="fas fa-trash"></i> Limpiar
+        </button>
+      </div>
+
+      <div class="btn-group">
+        <button onclick="generarCalendario()">
+          <i class="fas fa-calendar-alt"></i> Calendario
+        </button>
+        <button onclick="exportarResultadosExcel()">
+          <i class="fas fa-file-csv"></i> Exportar CSV
+        </button>
+        <button onclick="generarPDF()">
+          <i class="fas fa-file-pdf"></i> PDF General
+        </button>
+        <button onclick="generarPDFporCategoria()">
+          <i class="fas fa-file-alt"></i> PDF por Categoría
+        </button>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="card">
+      <h2><i class="fas fa-edit"></i> Partidos y Resultados</h2>
+      <div class="partidos" id="resultados"></div>
+    </div>
+
+    <!-- Calendario -->
+    <div class="card">
+      <h2><i class="fas fa-calendar-week"></i> Calendario del Torneo</h2>
+      <div class="calendario" id="calendario"></div>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="card">
+      <h2><i class="fas fa-chart-bar"></i> Estadísticas por Jugador</h2>
+      <div id="estadisticas-jugadores"></div>
+    </div>
+  </div>
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    // ====== VARIABLES ======
+    const formulario = document.getElementById("formulario");
+    const tabla = document.getElementById("tablaDeportistas");
+    const resultados = document.getElementById("resultados");
+    const calendario = document.getElementById("calendario");
+    const infoJugadores = document.getElementById("info-jugadores");
+    
+    let deportistas = [];
+    let ganadores = [];
+    let resultadosTorneo = [];
+    let partidosCreados = new Set(); // Será reasignado en cargarDatos()
+    let contadorGlobal = 0;
+
+    // ====== CARGAR DATOS AL INICIAR ======
+    function cargarDatos() {
+      try {
+        if (localStorage.getItem("deportistas")) {
+          deportistas = JSON.parse(localStorage.getItem("deportistas"));
+        }
+        if (localStorage.getItem("ganadores")) {
+          ganadores = JSON.parse(localStorage.getItem("ganadores")) || [];
+        }
+        if (localStorage.getItem("resultadosTorneo")) {
+          resultadosTorneo = JSON.parse(localStorage.getItem("resultadosTorneo"));
+        }
+        if (localStorage.getItem("partidosCreados")) {
+          // ✅ CORREGIDO: Convertir array a Set
+          const array = JSON.parse(localStorage.getItem("partidosCreados"));
+          partidosCreados = new Set(array);
+        } else {
+          partidosCreados = new Set();
+        }
+      } catch (e) {
+        console.error("Error al cargar datos:", e);
+        partidosCreados = new Set();
+        ganadores = [];
+      }
+
+      // Limpiar tabla antes de llenar
+      while (tabla.rows.length > 1) {
+        tabla.deleteRow(1);
+      }
+
+      deportistas.forEach(j => {
+        const fila = tabla.insertRow();
+        const celdaNombre = fila.insertCell(0);
+        if (j.pareja) {
+          celdaNombre.innerHTML = `${j.nombre} +<br><small>${j.pareja}</small>`;
+        } else {
+          celdaNombre.textContent = j.nombre;
+        }
+        fila.insertCell(1).textContent = obtenerNombreCategoria(j.rango);
+        fila.insertCell(2).textContent = j.club;
+        fila.insertCell(3).textContent = j.sexo;
+      });
+
+      actualizarContadorJugadores();
+
+      // ✅ CORREGIDO: Habilitar botón si no hay partidos
+      const btnCrear = document.getElementById("btnCrearPartido");
+      if (partidosCreados.size > 0) {
+        btnCrear.classList.add("disabled");
+      } else {
+        btnCrear.classList.remove("disabled");
+      }
+
+      // Habilitar/deshabilitar otros botones
+      if (ganadores.some(g => g.tipo === "Cuartos de Final")) {
+        document.querySelector("[onclick='generarCuartos()']").classList.add("disabled");
+      }
+      if (ganadores.some(g => g.tipo === "Semifinales")) {
+        document.querySelector("[onclick='generarSemifinales()']").classList.add("disabled");
+      }
+      if (ganadores.some(g => g.tipo === "Final")) {
+        document.querySelector("[onclick='generarFinal()']").classList.add("disabled");
+      }
+
+      mostrarResultadosGuardados();
+      generarCalendario();
+      generarEstadisticas();
+    }
+
+    function actualizarContadorJugadores() {
+      const total = deportistas.length;
+      const femenino = deportistas.filter(d => d.sexo === "Femenino").length;
+      const masculino = deportistas.filter(d => d.sexo === "Masculino").length;
+      infoJugadores.textContent = `Total: ${total} jugadores (${femenino} F / ${masculino} M)`;
+    }
+
+    // ====== FORMULARIO DE JUGADOR ======
+    document.getElementById("modalidad").addEventListener("change", function () {
+      const sexoSelect = document.getElementById("sexo");
+      const modalidad = this.value;
+      const campoPareja = document.getElementById("campo-pareja");
+
+      sexoSelect.disabled = false;
+
+      if (modalidad === "Individual Femenino") {
+        sexoSelect.value = "Femenino";
+        sexoSelect.disabled = true;
+        campoPareja.style.display = "none";
+      } else if (modalidad === "Individual Masculino") {
+        sexoSelect.value = "Masculino";
+        sexoSelect.disabled = true;
+        campoPareja.style.display = "none";
+      } else if (modalidad === "Dobles Femenino") {
+        sexoSelect.value = "Femenino";
+        sexoSelect.disabled = true;
+        campoPareja.style.display = "block";
+      } else if (modalidad === "Dobles Masculino") {
+        sexoSelect.value = "Masculino";
+        sexoSelect.disabled = true;
+        campoPareja.style.display = "block";
+      } else if (modalidad === "Mixto") {
+        sexoSelect.disabled = false;
+        campoPareja.style.display = "block";
+      } else {
+        campoPareja.style.display = "none";
+      }
+    });
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value.trim();
+      const club = document.getElementById("club").value.trim();
+      const sexo = document.getElementById("sexo").value;
+      const modalidad = document.getElementById("modalidad").value;
+      const rango = document.getElementById("rango").value;
+      const pareja = document.getElementById("pareja").value?.trim() || "";
+
+      if (!nombre || !club || !sexo || !modalidad || !rango) {
+        alert("Por favor, completa todos los campos.");
+        return;
+      }
+
+      if (modalidad.includes("Dobles") || modalidad === "Mixto") {
+        if (!pareja) {
+          alert("Debes ingresar el nombre de la pareja.");
+          return;
+        }
+        if (nombre === pareja) {
+          alert("No puedes formar pareja contigo mismo.");
+          return;
+        }
+      }
+
+      const yaRegistrado = deportistas.some(d => 
+        d.nombre === nombre && 
+        d.rango === rango && 
+        d.modalidad === modalidad &&
+        (d.pareja ? d.pareja === pareja : !pareja)
+      );
+
+      if (yaRegistrado) {
+        alert(`Ya estás registrado en ${modalidad} en esta categoría.`);
+        return;
+      }
+
+      const jugador = { nombre, club, sexo, modalidad, rango };
+      if (pareja) jugador.pareja = pareja;
+
+      deportistas.push(jugador);
+
+      const fila = tabla.insertRow();
+      const celdaNombre = fila.insertCell(0);
+      if (pareja) {
+        celdaNombre.innerHTML = `${nombre} +<br><small>${pareja}</small>`;
+      } else {
+        celdaNombre.textContent = nombre;
+      }
+      fila.insertCell(1).textContent = obtenerNombreCategoria(rango);
+      fila.insertCell(2).textContent = club;
+      fila.insertCell(3).textContent = sexo;
+
+      actualizarContadorJugadores();
+      guardarDatos();
+      formulario.reset();
+      document.getElementById("campo-pareja").style.display = "none";
+    });
+
+    function obtenerNombreCategoria(rango) {
+      const map = {
+        PreInfantilSub9: "Pre Infantil U 9",
+        InfantilSub11: "Infantil U 11",
+        JuvenilSub13: "Juvenil U 13",
+        PreJuvenilSub15: "Pre Juvenil U 15",
+        JuvenilSub17: "Juvenil U 17",
+        Absoluto: "Absoluto"
+      };
+      return map[rango] || rango;
+    }
+
+    // ====== GENERAR FECHAS Y HORAS AUTOMÁTICAS ======
+    function generarFechaHoraAutomatica(indice) {
+      const fecha = new Date();
+      fecha.setDate(fecha.getDate() + Math.floor(indice / 8));
+      const horaInicio = 9;
+      const minutos = (indice % 8) * 30;
+      const hora = horaInicio + Math.floor(minutos / 60);
+      const min = minutos % 60;
+      return {
+        fecha: fecha.toISOString().split('T')[0],
+        hora: `${hora.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`,
+        cancha: Math.floor(indice / 4) + 1
+      };
+    }
+
+    // ====== CREAR PARTIDOS: Todos contra todos por grupos ======
+    function crearPartido() {
+      const btn = document.getElementById("btnCrearPartido");
+      if (btn.classList.contains("disabled")) {
+        alert("Los partidos iniciales ya han sido creados.");
+        return;
+      }
+
+      resultados.innerHTML = "<h3>🏸 Torneo: Todos Contra Todos por Grupos</h3>";
+      const rangos = ["PreInfantilSub9", "InfantilSub11", "JuvenilSub13", "PreJuvenilSub15", "JuvenilSub17", "Absoluto"];
+      let hayPartidos = false;
+
+      rangos.forEach(rango => {
+        const modalidades = [
+          { tipo: "Individual Femenino", grupo: "Femenino" },
+          { tipo: "Individual Masculino", grupo: "Masculino" },
+          { tipo: "Dobles Femenino", grupo: "Dobles Femenino" },
+          { tipo: "Dobles Masculino", grupo: "Dobles Masculino" },
+          { tipo: "Mixto", grupo: "Mixto" }
+        ];
+
+        modalidades.forEach(modalidad => {
+          const lista = deportistas.filter(d => d.rango === rango && d.modalidad === modalidad.tipo);
+          if (lista.length < 2) return;
+
+          hayPartidos = true;
+          const numGrupos = lista.length <= 4 ? 1 : (lista.length <= 8 ? 2 : 3);
+          const grupos = dividirEnGrupos(lista, numGrupos);
+
+          resultados.innerHTML += `<h4>🎯 ${modalidad.grupo} - ${obtenerNombreCategoria(rango)} (${lista.length} participantes)</h4>`;
+          resultados.innerHTML += `<p><strong>Grupos formados:</strong> ${grupos.length} grupo(s)</p>`;
+
+          grupos.forEach((grupo, idx) => {
+            resultados.innerHTML += `<h5>Grupo ${idx + 1} (${grupo.length} equipo${grupo.length > 1 ? 's' : ''})</h5>`;
+            generarPartidosTodosContraTodos(grupo, rango, modalidad.grupo, `Grupo ${idx + 1}`);
+          });
+        });
+      });
+
+      if (!hayPartidos) {
+        resultados.innerHTML += "<p style='color: red;'>⚠️ No hay suficientes jugadores para crear partidos.</p>";
+        return;
+      }
+
+      btn.classList.add("disabled");
+      guardarDatos();
+    }
+
+    function dividirEnGrupos(lista, numGrupos) {
+      const shuffled = [...lista].sort(() => Math.random() - 0.5);
+      const grupos = Array.from({ length: numGrupos }, () => []);
+      shuffled.forEach((item, index) => {
+        grupos[index % numGrupos].push(item);
+      });
+      return grupos;
+    }
+
+    function generarPartidosTodosContraTodos(grupo, rango, tipoGrupo, nombreGrupo) {
+      let partidos = [];
+      for (let i = 0; i < grupo.length; i++) {
+        for (let j = i + 1; j < grupo.length; j++) {
+          partidos.push({ j1: grupo[i], j2: grupo[j] });
+        }
+      }
+
+      partidos.sort(() => Math.random() - 0.5);
+      partidos.forEach((partido, idx) => {
+        const { j1, j2 } = partido;
+        const nombre1 = j1.pareja ? `${j1.nombre}+${j1.pareja}` : j1.nombre;
+        const nombre2 = j2.pareja ? `${j2.nombre}+${j2.pareja}` : j2.nombre;
+        const [sorted1, sorted2] = [nombre1, nombre2].sort();
+        const partidoId = `${rango}_${tipoGrupo}_${nombreGrupo}_${sorted1}_vs_${sorted2}`.replace(/\s+/g, '_');
+
+        if (partidosCreados.has(partidoId)) return;
+        partidosCreados.add(partidoId);
+
+        const { fecha, hora, cancha } = generarFechaHoraAutomatica(contadorGlobal++);
+        
+        const displayJ1 = j1.pareja ? `${j1.nombre} + ${j1.pareja}` : j1.nombre;
+        const displayJ2 = j2.pareja ? `${j2.nombre} + ${j2.pareja}` : j2.nombre;
+
+        const div = document.createElement("div");
+        div.className = "set-inputs";
+        div.dataset.id = partidoId;
+
+        div.innerHTML = `
+          <p><strong>${nombreGrupo} - Partido ${idx + 1}: ${displayJ1}</strong> vs <strong>${displayJ2}</strong></p>
+          <p><small>📅 <strong>Fecha:</strong> ${fecha} | ⏰ <strong>Hora:</strong> ${hora} | 🏸 <strong>Cancha:</strong> ${cancha}</small></p>
+          <label>Set 1:</label>
+          <input type="number" min="0" max="30" placeholder="${j1.nombre}" id="set1_${partidoId}_p1">
+          <input type="number" min="0" max="30" placeholder="${j2.nombre}" id="set1_${partidoId}_p2"><br>
+          <label>Set 2:</label>
+          <input type="number" min="0" max="30" placeholder="${j1.nombre}" id="set2_${partidoId}_p1">
+          <input type="number" min="0" max="30" placeholder="${j2.nombre}" id="set2_${partidoId}_p2"><br>
+          <label>Set 3 (opcional):</label>
+          <input type="number" min="0" max="30" placeholder="${j1.nombre}" id="set3_${partidoId}_p1">
+          <input type="number" min="0" max="30" placeholder="${j2.nombre}" id="set3_${partidoId}_p2"><br>
+          <small style="color: #666;">Gana el mejor de 3 sets (21 puntos, +2 de diferencia).</small><br>
+          <button onclick="guardarResultado('${rango}', '${tipoGrupo}', '${partidoId}', '${j1.nombre}', '${j2.nombre}', '${nombreGrupo}', '${j1.pareja || ''}', '${j2.pareja || ''}')">
+            Guardar Resultado
+          </button>
+          <div class="resumen-partido" id="resumen_${partidoId}"></div>
+        `;
+        resultados.appendChild(div);
+      });
+    }
+
+    function guardarResultado(rango, grupo, partidoId, jugador1, jugador2, tipo, pareja1 = '', pareja2 = '') {
+      const getVal = id => {
+        const val = document.getElementById(id)?.value;
+        return val !== undefined && val !== '' ? parseInt(val) : -1;
+      };
+
+      const s1p1 = getVal(`set1_${partidoId}_p1`);
+      const s1p2 = getVal(`set1_${partidoId}_p2`);
+      const s2p1 = getVal(`set2_${partidoId}_p1`);
+      const s2p2 = getVal(`set2_${partidoId}_p2`);
+      const s3p1 = getVal(`set3_${partidoId}_p1`);
+      const s3p2 = getVal(`set3_${partidoId}_p2`);
+
+      const sets = [];
+      let setsJ1 = 0, setsJ2 = 0;
+
+      function validarSet(p1, p2) {
+        if (p1 < 0 || p2 < 0) return false;
+        const max = Math.max(p1, p2);
+        const min = Math.min(p1, p2);
+        return (max >= 21 && max - min >= 2) || (max === 30 && min === 29);
+      }
+
+      if (s1p1 >= 0 && s1p2 >= 0) {
+        if (validarSet(s1p1, s1p2)) {
+          sets.push(`${s1p1}-${s1p2}`);
+          if (s1p1 > s1p2) setsJ1++;
+          else setsJ2++;
+        } else {
+          document.getElementById(`resumen_${partidoId}`).innerHTML = `<p style="color: red;">❌ Set 1 inválido: ${s1p1}-${s1p2}</p>`;
+          return;
+        }
+      }
+
+      if (s2p1 >= 0 && s2p2 >= 0) {
+        if (validarSet(s2p1, s2p2)) {
+          sets.push(`${s2p1}-${s2p2}`);
+          if (s2p1 > s2p2) setsJ1++;
+          else setsJ2++;
+        } else {
+          document.getElementById(`resumen_${partidoId}`).innerHTML = `<p style="color: red;">❌ Set 2 inválido: ${s2p1}-${s2p2}</p>`;
+          return;
+        }
+      }
+
+      if ((s3p1 >= 0 || s3p2 >= 0) && setsJ1 < 2 && setsJ2 < 2) {
+        if (validarSet(s3p1, s3p2)) {
+          sets.push(`${s3p1}-${s3p2}`);
+          if (s3p1 > s3p2) setsJ1++;
+          else setsJ2++;
+        } else {
+          document.getElementById(`resumen_${partidoId}`).innerHTML = `<p style="color: red;">❌ Set 3 inválido: ${s3p1}-${s3p2}</p>`;
+          return;
+        }
+      }
+
+      let resultado = "";
+      let ganadorNombre, ganadorPareja;
+      if (setsJ1 >= 2) {
+        resultado = `<strong>${jugador1}${pareja1 ? ' + ' + pareja1 : ''}</strong> gana ${setsJ1}-${setsJ2}`;
+        ganadorNombre = jugador1;
+        ganadorPareja = pareja1;
+      } else if (setsJ2 >= 2) {
+        resultado = `<strong>${jugador2}${pareja2 ? ' + ' + pareja2 : ''}</strong> gana ${setsJ2}-${setsJ1}`;
+        ganadorNombre = jugador2;
+        ganadorPareja = pareja2;
+      } else {
+        document.getElementById(`resumen_${partidoId}`).innerHTML = `<p style="color: red;">❌ Se necesitan 2 sets ganados.</p>`;
+        return;
+      }
+
+      const ganadorObj = { nombre: ganadorNombre, pareja: ganadorPareja, rango, grupo, partidoId, tipo };
+      if (!ganadores.some(g => g.partidoId === partidoId)) {
+        ganadores.push(ganadorObj);
+      }
+
+      const partido = {
+        tipo, jugador1, jugador2, pareja1, pareja2, categoria: obtenerNombreCategoria(rango), grupo,
+        sets: { s1p1, s1p2, s2p1, s2p2, s3p1, s3p2 },
+        resultado, partidoId, 
+        fecha: generarFechaHoraAutomatica(0).fecha, 
+        hora: generarFechaHoraAutomatica(0).hora, 
+        cancha: generarFechaHoraAutomatica(0).cancha
+      };
+
+      if (!resultadosTorneo.some(p => p.partidoId === partidoId)) {
+        resultadosTorneo.push(partido);
+      }
+
+      const display1 = pareja1 ? `${jugador1} + ${pareja1}` : jugador1;
+      const display2 = pareja2 ? `${jugador2} + ${pareja2}` : jugador2;
+      const displayGanador = setsJ1 >= 2 ? display1 : display2;
+
+      document.getElementById(`resumen_${partidoId}`).innerHTML = `
+        <p><strong>${displayGanador}</strong> gana ${Math.max(setsJ1, setsJ2)}-${Math.min(setsJ1, setsJ2)} (${sets.join(', ')})</p>
+        <small>📅 ${partido.fecha} | ⏰ ${partido.hora} | 🏸 Cancha ${partido.cancha}</small>
+      `;
+
+      const btn = document.querySelector(`[onclick*="${partidoId}"]`);
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Guardado";
+      }
+
+      generarCalendario();
+      generarEstadisticas();
+      guardarDatos();
+    }
+
+    function calcularClasificados() {
+      const puntajes = {};
+      resultadosTorneo.forEach(partido => {
+        const { jugador1, jugador2, pareja1, pareja2, rango, grupo, sets } = partido;
+        const key1 = pareja1 ? `${jugador1}+${pareja1}` : jugador1;
+        const key2 = pareja2 ? `${jugador2}+${pareja2}` : jugador2;
+
+        if (!puntajes[key1]) puntajes[key1] = { victorias: 0, setsG: 0, setsP: 0, rango, modalidad: grupo };
+        if (!puntajes[key2]) puntajes[key2] = { victorias: 0, setsG: 0, setsP: 0, rango, modalidad: grupo };
+
+        let setsJ1 = 0, setsJ2 = 0;
+        if (sets.s1p1 > sets.s1p2) setsJ1++;
+        else if (sets.s1p2 > sets.s1p1) setsJ2++;
+        if (sets.s2p1 > sets.s2p2) setsJ1++;
+        else if (sets.s2p2 > sets.s2p1) setsJ2++;
+        if (sets.s3p1 > sets.s3p2) setsJ1++;
+        else if (sets.s3p2 > sets.s3p1) setsJ2++;
+
+        puntajes[key1].setsG += setsJ1;
+        puntajes[key1].setsP += setsJ2;
+        puntajes[key2].setsG += setsJ2;
+        puntajes[key2].setsP += setsJ1;
+
+        if (setsJ1 >= 2) puntajes[key1].victorias++;
+        else puntajes[key2].victorias++;
+      });
+
+      return Object.entries(puntajes)
+        .sort((a, b) => {
+          if (b[1].victorias !== a[1].victorias) return b[1].victorias - a[1].victorias;
+          const difA = a[1].setsG - a[1].setsP;
+          const difB = b[1].setsG - b[1].setsP;
+          if (difB !== difA) return difB - difA;
+          return b[1].setsG - a[1].setsG;
+        })
+        .slice(0, 32)
+        .reduce((acc, [clave, datos]) => {
+          acc[clave] = datos;
+          return acc;
+        }, {});
+    }
+
+    function generarCuartos() {
+      const btn = document.querySelector("[onclick='generarCuartos()']");
+      if (btn?.classList.contains("disabled")) {
+        alert("Ya se generaron los cuartos de final.");
+        return;
+      }
+
+      resultados.innerHTML += "<h3>🎯 Cuartos de Final - Clasificados por Grupos</h3>";
+
+      const clasificados = calcularClasificados();
+      const avanzados = {};
+      Object.values(clasificados).forEach(eq => {
+        const key = `${eq.rango}_${eq.modalidad}`;
+        if (!avanzados[key]) avanzados[key] = [];
+        avanzados[key].push(eq);
+      });
+
+      let hayPartidos = false;
+      Object.keys(avanzados).forEach(key => {
+        const [rango, modalidad] = key.split("_");
+        const grupo = modalidad.includes("Femenino") ? "Femenino" : modalidad.includes("Masculino") ? "Masculino" : modalidad;
+        const lista = avanzados[key].slice(0, 4);
+        if (lista.length >= 2) {
+          resultados.innerHTML += `<h4>⚔️ ${modalidad.replace(/_/g, ' ')} - ${obtenerNombreCategoria(rango)}</h4>`;
+          crearEmparejamientos(lista, grupo, rango, "Cuartos de Final");
+          hayPartidos = true;
+        }
+      });
+
+      if (!hayPartidos) {
+        resultados.innerHTML += "<p>No hay suficientes clasificados para cuartos.</p>";
+        return;
+      }
+
+      btn.classList.add("disabled");
+      guardarDatos();
+    }
+
+    function crearEmparejamientos(lista, grupo, rango, tipo) {
+      let jugadores = [...lista].sort(() => Math.random() - 0.5);
+      let contador = 1;
+      const hayImpar = jugadores.length % 2 === 1;
+      const sobrante = hayImpar ? jugadores.pop() : null;
+
+      while (jugadores.length >= 2) {
+        const j1 = jugadores.pop();
+        const j2 = jugadores.pop();
+        const nombre1 = j1.pareja ? `${j1.nombre}+${j1.pareja}` : j1.nombre;
+        const nombre2 = j2.pareja ? `${j2.nombre}+${j2.pareja}` : j2.nombre;
+        const [sorted1, sorted2] = [nombre1, nombre2].sort();
+        const partidoId = `${rango}_${grupo}_${sorted1}_${sorted2}`.replace(/\s+/g, '_');
+
+        if (partidosCreados.has(partidoId)) continue;
+        partidosCreados.add(partidoId);
+
+        const { fecha, hora, cancha } = generarFechaHoraAutomatica(contadorGlobal++);
+        const div = document.createElement("div");
+        div.className = "set-inputs";
+        div.dataset.id = partidoId;
+
+        const displayJ1 = j1.pareja ? `${j1.nombre} + ${j1.pareja}` : j1.nombre;
+        const displayJ2 = j2.pareja ? `${j2.nombre} + ${j2.pareja}` : j2.nombre;
+
+        div.innerHTML = `
+          <p><strong>${tipo} - Partido ${contador} (${grupo}): ${displayJ1}</strong> vs <strong>${displayJ2}</strong></p>
+          <p><small>📅 <strong>Fecha:</strong> ${fecha} | ⏰ <strong>Hora:</strong> ${hora} | 🏸 <strong>Cancha:</strong> ${cancha}</small></p>
+          <label>Set 1:</label>
+          <input type="number" min="0" max="30" placeholder="${j1.nombre}" id="set1_${partidoId}_p1">
+          <input type="number" min="0" max="30" placeholder="${j2.nombre}" id="set1_${partidoId}_p2"><br>
+          <label>Set 2:</label>
+          <input type="number" min="0" max="30" placeholder="${j1.nombre}" id="set2_${partidoId}_p1">
+          <input type="number" min="0" max="30" placeholder="${j2.nombre}" id="set2_${partidoId}_p2"><br>
+          <label>Set 3 (opcional):</label>
+          <input type="number" min="0" max="30" placeholder="${j1.nombre}" id="set3_${partidoId}_p1">
+          <input type="number" min="0" max="30" placeholder="${j2.nombre}" id="set3_${partidoId}_p2"><br>
+          <small style="color: #666;">Gana el mejor de 3 sets.</small><br>
+          <button onclick="guardarResultado('${rango}', '${grupo}', '${partidoId}', '${j1.nombre}', '${j2.nombre}', '${tipo}', '${j1.pareja || ''}', '${j2.pareja || ''}')">
+            Guardar Resultado
+          </button>
+          <div class="resumen-partido" id="resumen_${partidoId}"></div>
+        `;
+        resultados.appendChild(div);
+        contador++;
+        contadorGlobal++;
+      }
+
+      if (sobrante) {
+        const nombreSobrante = sobrante.pareja ? `${sobrante.nombre} + ${sobrante.pareja}` : sobrante.nombre;
+        resultados.innerHTML += `<p>✅ <strong>${nombreSobrante}</strong> avanza por WO.</p>`;
+        ganadores.push({ 
+          nombre: sobrante.nombre, 
+          pareja: sobrante.pareja, 
+          rango, 
+          grupo, 
+          partidoId: `${rango}_${grupo}_${nombreSobrante}_WO`, 
+          tipo 
+        });
+      }
+    }
+
+    function generarSemifinales() { generarSiguienteRonda("Semifinales", "Cuartos de Final"); }
+    function generarFinal() { generarSiguienteRonda("Final", "Semifinales"); }
+
+    function generarSiguienteRonda(tipo, rondaAnterior) {
+      const btn = document.querySelector(`[onclick="generar${tipo.replace(/\s+/g, '')}()"]`);
+      if (btn?.classList.contains("disabled")) {
+        alert(`Ya se generaron los partidos de ${tipo}.`);
+        return;
+      }
+
+      const ganadoresAnteriores = ganadores.filter(g => g.tipo === rondaAnterior);
+      if (ganadoresAnteriores.length === 0) {
+        alert(`No hay ganadores de "${rondaAnterior}" para generar ${tipo}.`);
+        return;
+      }
+
+      resultados.innerHTML += `<h3>🏆 ${tipo}</h3>`;
+      const nuevosGanadores = [];
+      const rangos = ["PreInfantilSub9", "InfantilSub11", "JuvenilSub13", "PreJuvenilSub15", "JuvenilSub17", "Absoluto"];
+
+      rangos.forEach(rango => {
+        const modalidades = ["Femenino", "Masculino", "Dobles Femenino", "Dobles Masculino", "Mixto"];
+        modalidades.forEach(grupo => {
+          const ganadoresGrupo = ganadoresAnteriores.filter(g => g.rango === rango && g.grupo === grupo);
+          if (ganadoresGrupo.length >= 2) {
+            resultados.innerHTML += `<h4>⚔️ ${grupo} - ${obtenerNombreCategoria(rango)} (${ganadoresGrupo.length})</h4>`;
+            const jugadores = ganadoresGrupo.map(g => {
+              const d = deportistas.find(d => d.nombre === g.nombre);
+              return { ...d, pareja: g.pareja };
+            });
+            crearEmparejamientos(jugadores, grupo, rango, tipo);
+          } else if (ganadoresGrupo.length === 1) {
+            resultados.innerHTML += `<p>✅ ${ganadoresGrupo[0].nombre} avanza por WO.</p>`;
+            nuevosGanadores.push({ ...ganadoresGrupo[0], tipo });
+          }
+        });
+      });
+
+      ganadores = ganadores.filter(g => g.tipo !== tipo);
+      ganadores.push(...nuevosGanadores);
+      if (btn) btn.classList.add("disabled");
+      generarCalendario();
+      generarEstadisticas();
+      guardarDatos();
+    }
+
+    function mostrarResultadosGuardados() {
+      resultadosTorneo.forEach(partido => {
+        const { partidoId, resultado } = partido;
+        const resumen = document.getElementById(`resumen_${partidoId}`);
+        if (resumen && !resumen.innerHTML) {
+          resumen.innerHTML = `<p>${resultado}</p>`;
+        }
+      });
+    }
+
+    function generarEstadisticas() {
+      const contenedor = document.getElementById("estadisticas-jugadores");
+      const setsPorJugador = {};
+      deportistas.forEach(j => {
+        setsPorJugador[j.nombre] = { setsGanados: 0, setsPerdidos: 0, partidosJugados: 0 };
+      });
+
+      resultadosTorneo.forEach(partido => {
+        const { jugador1, jugador2, pareja1, pareja2, sets } = partido;
+        [jugador1, pareja1, jugador2, pareja2].filter(Boolean).forEach(n => {
+          if (!setsPorJugador[n]) setsPorJugador[n] = { setsGanados: 0, setsPerdidos: 0, partidosJugados: 0 };
+          setsPorJugador[n].partidosJugados++;
+        });
+
+        if (sets.s1p1 > sets.s1p2) setsPorJugador[jugador1].setsGanados++;
+        else if (sets.s1p2 > sets.s1p1) setsPorJugador[jugador2].setsGanados++;
+
+        if (sets.s2p1 > sets.s2p2) setsPorJugador[jugador1].setsGanados++;
+        else if (sets.s2p2 > sets.s2p1) setsPorJugador[jugador2].setsGanados++;
+
+        if (sets.s3p1 > sets.s3p2) setsPorJugador[jugador1].setsGanados++;
+        else if (sets.s3p2 > sets.s3p1) setsPorJugador[jugador2].setsGanados++;
+      });
+
+      const jugadoresOrdenados = Object.keys(setsPorJugador)
+        .map(nombre => ({ nombre, ...setsPorJugador[nombre] }))
+        .sort((a, b) => b.setsGanados - a.setsGanados);
+
+      contenedor.innerHTML = `
+        <table>
+          <tr>
+            <th>Jugador</th>
+            <th>Partidos</th>
+            <th>Sets Ganados</th>
+            <th>Sets Perdidos</th>
+            <th>Ratio</th>
+          </tr>
+          ${jugadoresOrdenados.map(j => `
+            <tr>
+              <td><strong>${j.nombre}</strong></td>
+              <td>${j.partidosJugados}</td>
+              <td>${j.setsGanados}</td>
+              <td>${j.setsPerdidos}</td>
+              <td>${j.setsGanados}/${j.setsPerdidos}</td>
+            </tr>
+          `).join('')}
+        </table>
+      `;
+    }
+
+    function generarCalendario() {
+      calendario.innerHTML = "<h3>📅 Calendario Oficial</h3>";
+      const partidosPorFecha = {};
+      resultadosTorneo.forEach(p => {
+        if (!p.fecha) return;
+        if (!partidosPorFecha[p.fecha]) partidosPorFecha[p.fecha] = [];
+        partidosPorFecha[p.fecha].push(p);
+      });
+
+      if (Object.keys(partidosPorFecha).length === 0) {
+        calendario.innerHTML += "<p>No hay partidos programados.</p>";
+        return;
+      }
+
+      Object.keys(partidosPorFecha).sort().forEach(fecha => {
+        const partidos = partidosPorFecha[fecha];
+        const fechaFormato = new Date(fecha).toLocaleDateString('es-ES', {
+          weekday: 'long', day: 'numeric', month: 'long'
+        });
+
+        calendario.innerHTML += `<h4>🗓️ ${fechaFormato}</h4>`;
+        partidos.forEach(p => {
+          const j1 = p.pareja1 ? `${p.jugador1} + ${p.pareja1}` : p.jugador1;
+          const j2 = p.pareja2 ? `${p.jugador2} + ${p.pareja2}` : p.jugador2;
+          calendario.innerHTML += `
+            <p>
+              <strong>${p.hora}</strong> | 
+              Cancha <strong>${p.cancha}</strong> | 
+              ${j1} vs ${j2} 
+              <em>(${p.categoria} ${p.grupo})</em>
+            </p>
+          `;
+        });
+      });
+    }
+
+    function exportarResultadosExcel() {
+      let csv = "Tipo,J1,J2,Pareja1,Pareja2,Fecha,Hora,Cancha,Set1,Set2,Set3,Resultado\n";
+      resultadosTorneo.forEach(p => {
+        const set1 = p.sets.s1p1 >= 0 ? `${p.sets.s1p1}-${p.sets.s1p2}` : "";
+        const set2 = p.sets.s2p1 >= 0 ? `${p.sets.s2p1}-${p.sets.s2p2}` : "";
+        const set3 = p.sets.s3p1 >= 0 ? `${p.sets.s3p1}-${p.sets.s3p2}` : "";
+        const res = p.resultado.replace(/<[^>]*>/g, "");
+        csv += `"${p.tipo}","${p.jugador1}","${p.jugador2}","${p.pareja1 || ''}","${p.pareja2 || ''}","${p.fecha}","${p.hora}","${p.cancha}","${set1}","${set2}","${set3}","${res}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "resultados_badminton_completo.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function generarPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      let y = 20;
+      doc.setFontSize(16);
+      doc.text("Resultados del Torneo de Bádminton", 10, y);
+      y += 15;
+      doc.setFontSize(12);
+      resultadosTorneo.forEach(p => {
+        const j1 = p.pareja1 ? `${p.jugador1} + ${p.pareja1}` : p.jugador1;
+        const j2 = p.pareja2 ? `${p.jugador2} + ${p.pareja2}` : p.jugador2;
+        doc.text(`${p.tipo}: ${j1} vs ${j2}`, 10, y); y += 7;
+        doc.text(`Fecha: ${p.fecha} | Hora: ${p.hora} | Cancha: ${p.cancha}`, 10, y); y += 7;
+        doc.text(`Set 1: ${p.sets.s1p1}-${p.sets.s1p2} | Set 2: ${p.sets.s2p1}-${p.sets.s2p2} | Set 3: ${p.sets.s3p1}-${p.sets.s3p2}`, 10, y); y += 7;
+        doc.text(`Resultado: ${p.resultado.replace(/<[^>]*>?/g, '')}`, 10, y); y += 10;
+        if (y > 270) { doc.addPage(); y = 20; }
+      });
+      doc.save("resultados_torneo_detalle.pdf");
+    }
+
+    function generarPDFporCategoria() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const categorias = {};
+      resultadosTorneo.forEach(p => {
+        const key = `${p.categoria} - ${p.grupo}`;
+        if (!categorias[key]) categorias[key] = [];
+        categorias[key].push(p);
+      });
+      let y = 20;
+      Object.entries(categorias).forEach(([cat, partidos], idx) => {
+        if (idx > 0) { doc.addPage(); y = 20; }
+        doc.setFontSize(16);
+        doc.text(`Categoría: ${cat}`, 10, y); y += 15;
+        partidos.forEach(p => {
+          const j1 = p.pareja1 ? `${p.jugador1} + ${p.pareja1}` : p.jugador1;
+          const j2 = p.pareja2 ? `${p.jugador2} + ${p.pareja2}` : p.jugador2;
+          doc.text(`${p.tipo}: ${j1} vs ${j2}`, 10, y); y += 7;
+          doc.text(`Fecha: ${p.fecha}, Hora: ${p.hora}, Cancha: ${p.cancha}`, 10, y); y += 7;
+          doc.text(`Set 1: ${p.sets.s1p1}-${p.sets.s1p2} | Set 2: ${p.sets.s2p1}-${p.sets.s2p2} | Set 3: ${p.sets.s3p1}-${p.sets.s3p2}`, 10, y); y += 7;
+          doc.text(`Resultado: ${p.resultado.replace(/<[^>]*>?/g, '')}`, 10, y); y += 10;
+          if (y > 270) { doc.addPage(); y = 20; }
+        });
+      });
+      doc.save("resultados_por_categoria_detalle.pdf");
+    }
+
+    function limpiarSistema() {
+      if (!confirm("¿Estás seguro de que deseas limpiar todo el sistema?")) return;
+      deportistas = [];
+      ganadores = [];
+      resultadosTorneo = [];
+      partidosCreados.clear();
+      tabla.innerHTML = `<tr><th>Nombre</th><th>Categoría</th><th>Club</th><th>Sexo</th></tr>`;
+      resultados.innerHTML = "";
+      calendario.innerHTML = "";
+      document.getElementById("estadisticas-jugadores").innerHTML = "";
+      document.querySelectorAll(".btn.disabled").forEach(b => b.classList.remove("disabled"));
+      localStorage.clear();
+      alert("Sistema limpiado.");
+    }
+
+    function guardarDatos() {
+      try {
+        localStorage.setItem("deportistas", JSON.stringify(deportistas));
+        localStorage.setItem("ganadores", JSON.stringify(ganadores));
+        localStorage.setItem("resultadosTorneo", JSON.stringify(resultadosTorneo));
+        localStorage.setItem("partidosCreados", JSON.stringify([...partidosCreados])); // ✅ Guardar como array
+      } catch (e) {
+        console.error("Error al guardar datos:", e);
+      }
+    }
+
+    // ====== CARGAR AL INICIAR ======
+    window.onload = cargarDatos;
+  </script>
+</body>
+</html>
